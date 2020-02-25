@@ -28,11 +28,12 @@ namespace FitnessCenter.Views
             }
             else if(input == "4")
             {
-
+                Index.Introduction();
             }
             else
             {
                 Console.WriteLine("That is not a valid response, please try again.");
+
             }
         }
     }

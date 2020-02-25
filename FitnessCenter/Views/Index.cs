@@ -19,11 +19,11 @@ namespace FitnessCenter.Views
 
             if (input == "1")
             {
-                 ClubListView.CLView();
+                 ClubListView.Menu();
             }
             else if (input == "2")
             {
-                MemberListView.MLView();
+                 MemberListView.Menu();
             }
             else
             {

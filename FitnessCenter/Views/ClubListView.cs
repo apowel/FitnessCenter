@@ -7,12 +7,21 @@ namespace FitnessCenter.Views
 {
     public class ClubListView
     {
-        public static void CLView()
+        public static void Menu()
         {
+            Console.Clear();
+            Console.WriteLine("Here is the list of available clubs.");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
             for (int i = 0; i < ClubList.clubList.Count; i++)
             {
-                Console.WriteLine($"Name: {ClubList.clubList[i].Name}\tAddress: {ClubList.clubList[i].Address}");
+                //Console.WriteLine($"{i + 1}");
+                Console.WriteLine(String.Format("{0, -1}). Name: {1,-15} Address: {2,-10}",$"{i+1}", $"{ClubList.clubList[i].Name}", $"{ClubList.clubList[i].Address}"));
             }
+
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Select a club from the list above.");
+            string input = Console.ReadLine();
         }
     }
 }
