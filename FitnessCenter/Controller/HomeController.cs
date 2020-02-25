@@ -10,6 +10,9 @@ namespace FitnessCenter.Controller
 {
     public class HomeController
     {
+        //use these variables to store and call objects for ClubView and MemberDetailsView.
+        private Club currentClub;
+        private Member currentMember;
         public HomeController()
         {
             MasterRouting(IndexRoute());
@@ -19,13 +22,22 @@ namespace FitnessCenter.Controller
             switch (i)
             {
                 case 1:
-                    Index.Introduction();
+                    IndexRoute();
                     break;
                 case 2:
-                    ClubListView.CLView();
+                    CLVRoute();
                     break;
                 case 3:
-                    MemberListView.MLView();
+                    MLVRoute();
+                    break;
+                case 4:
+                    ClubViewRoute();
+                    break;
+                case 5:
+                    MemberViewRoute();
+                    break;
+                case 6:
+                    AddMemberViewRoute();
                     break;
                 default:
                     Index.Introduction();
@@ -52,6 +64,26 @@ namespace FitnessCenter.Controller
                 Console.Clear();
                 return IndexRoute();
             }
+        }
+        private int CLVRoute()
+        {
+
+        }
+        private int ClubViewRoute()
+        {
+
+        }
+        private int MLVRoute()
+        {
+
+        }
+        private int MemberViewRoute()
+        {
+
+        }
+        private int AddMemberViewRoute()
+        {
+
         }
     }
 }
