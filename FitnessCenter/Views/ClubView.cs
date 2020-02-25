@@ -7,10 +7,12 @@ namespace FitnessCenter.Views
 {
     public class ClubView
     {
-        public static void CView(Club club)
+        public static void Display(Club club)
         {
             Console.WriteLine($"Welcome to {club.Name} Fitness Center!");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("1. Check in as a member\n2. Add a new member\n3. View the current list of members\n4. Return to the Main Menu");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
             string input = Console.ReadLine();
 
@@ -28,7 +30,7 @@ namespace FitnessCenter.Views
             }
             else if(input == "4")
             {
-                Index.Introduction();
+                
             }
             else
             {
