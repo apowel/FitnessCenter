@@ -1,4 +1,4 @@
-﻿using System;
+﻿using FitnessCenter.Views;
 
 namespace FitnessCenter
 {
@@ -6,7 +6,7 @@ namespace FitnessCenter
     {
         static void Main(string[] args)
         {
-
+            Index.Introduction();
         }
     }
 }

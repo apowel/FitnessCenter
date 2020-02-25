@@ -7,17 +7,13 @@ namespace FitnessCenter.Models
 {
     public class MemberList
     {
-        public List<Member> memberList;
-        public MemberList()
+        public static List<Member> memberList = new List<Member>()
         {
-            memberList = new List<Member>()
-            {
             new SCMember() { Id = 1234, Name = "Andrew", Membership = Membership.GrandRapids },
             new SCMember() { Id = 7138, Name = "Austin", Membership = Membership.Djibouti },
-            new SCMember() { Id = 3825, Name = "Tommy", Membership = Membership.MultiClub },
+            new MCMember() { Id = 3825, Name = "Tommy", Membership = Membership.MultiClub },
             new SCMember() { Id = 2678, Name = "Naruto", Membership = Membership.Kyoto }
-            };
-        }
+        };
         public Member Add(Member member)
         {
             // change to make id set as random 4 digit number
