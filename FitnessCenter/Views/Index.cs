@@ -6,6 +6,9 @@ namespace FitnessCenter.Views
 {
     public class Index
     {
-
+        public Index()
+        {
+            
+        }
     }
 }

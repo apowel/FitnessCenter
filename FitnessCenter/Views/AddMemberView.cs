@@ -6,5 +6,6 @@ namespace FitnessCenter.Views
 {
     public class AddMemberView
     {
+
     }
 }
