@@ -14,6 +14,7 @@ namespace FitnessCenter.Models
                 new Club() {Name = "Djibouti", Address = "H4VW+WF Djibouti"},
                 new Club() {Name = "Kyoto", Address = "689 Nakagyo Ward"},
             };
+
         //Customized ToString for testing purposes.
         public override string ToString()
         {

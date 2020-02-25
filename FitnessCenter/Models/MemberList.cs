@@ -20,11 +20,20 @@ namespace FitnessCenter.Models
             member.Id = memberList.Max(e => e.Id) + 1;
             memberList.Add(member);
         }
+        public static Member GetMember(int Id)
+        {
+            return memberList.FirstOrDefault(e => e.Id == Id);
+        }
+
+        //returns a list of members of a gym and includes multiclub members.
         public static List<Member> GetMembersOf(Membership m)
         {
             return memberList.Where(e => e.Membership == m || e.Membership == Membership.MultiClub).ToList();
         }
+
         // add file.io saving implemenation here?
+
+
         //Customized ToString for testing purposes.
         public override string ToString()
         {
