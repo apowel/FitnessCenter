@@ -13,6 +13,7 @@ namespace FitnessCenter.Views
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("1. Take a look at the list of available clubs");
             Console.WriteLine("2. Take a look at the members of the fitness centers");
+            Console.WriteLine("3. Exit to desktop");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }

@@ -11,20 +11,17 @@ namespace FitnessCenter.Controller
     public class HomeController
     {
         //use these variables to store and call objects for ClubView and MemberDetailsView.
-        private Club currentClub;
-        private Member currentMember;
+        public static Club currentClub;
+        public static Member currentMember;
         public HomeController()
         {
-            MasterRouting(IndexRoute());
+            MasterRouting(default);
         }
         private void MasterRouting(int i)
         {
             switch (i)
             {
                 case 1:
-                    IndexRoute();
-                    break;
-                case 2:
                     CLVRoute();
                     break;
                 case 3:
@@ -36,54 +33,112 @@ namespace FitnessCenter.Controller
                 case 5:
                     MemberViewRoute();
                     break;
-                case 6:
+                /*case 6:
                     AddMemberViewRoute();
-                    break;
+                    break;*/
                 default:
-                    Index.Introduction();
+                    IndexRoute();
                     break;
             }
         }
-        private int IndexRoute()
+        private void IndexRoute()
         {
+            Console.Clear();
             Index.Introduction();
             string input = Console.ReadLine();
 
             if (input == "1")
             {
-                return 2;
+                MasterRouting(1);
             }
             else if (input == "2")
             {
-                return 3;
+                MasterRouting(2);
+            }
+            else if (input == "3")
+            {
+                Environment.Exit(0);
             }
             else
             {
                 Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
                 Console.ReadLine();
                 Console.Clear();
-                return IndexRoute();
+                MasterRouting(default);
             }
         }
-        private int CLVRoute()
+        
+        private void CLVRoute()
         {
+            ClubListView.CLView();
+            int decision = 0;
+            while (!Int32.TryParse(Console.ReadLine(), out decision)
+                || decision < 1 || decision > (ClubList.clubList.Count + 1))
+            {
+                Console.Clear();
+                Console.WriteLine("That was not a Valid input");
+                ClubListView.CLView();
+            }
+            ClubList.SetCurrentClub(decision);
+            MasterRouting(4);
+        }
+        
+        private void ClubViewRoute()
+        {
+            ClubView.CView(currentClub);
+            string input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                string name;
+                Console.WriteLine("Please enter the name of the member");
+                name = Console.ReadLine();
+                try
+                {
+                    currentMember = MemberList.GetMember(name);
+                    currentMember.CheckIn(currentClub);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("That member does not exist");
+                    ClubViewRoute();
+                }
+                MasterRouting(default);
+            }
+            else if (input == "2")
+            {
+                MasterRouting(6);
+            }
+            else if (input == "3")
+            {
+                MasterRouting(default);
+            }
+            else if (input == "4")
+            {
+                MasterRouting(default);
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid response, please try again.");
+            }
 
         }
-        private int ClubViewRoute()
+        
+        private void MLVRoute()
         {
-
+            MasterRouting(default);
         }
-        private int MLVRoute()
+        
+        private void MemberViewRoute()
         {
-
+            //this route is not yet implemented
+            MasterRouting(default);
         }
-        private int MemberViewRoute()
-        {
-
-        }
+        /*
         private int AddMemberViewRoute()
         {
 
         }
+        */
     }
 }

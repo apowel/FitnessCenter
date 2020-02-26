@@ -20,9 +20,9 @@ namespace FitnessCenter.Models
             member.Id = memberList.Max(e => e.Id) + 1;
             memberList.Add(member);
         }
-        public static Member GetMember(int Id)
+        public static Member GetMember(string name)
         {
-            return memberList.FirstOrDefault(e => e.Id == Id);
+            return memberList.FirstOrDefault(e => e.Name == name);
         }
 
         //returns a list of members of a gym and includes multiclub members.

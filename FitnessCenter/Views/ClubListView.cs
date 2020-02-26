@@ -11,8 +11,9 @@ namespace FitnessCenter.Views
         {
             for (int i = 0; i < ClubList.clubList.Count; i++)
             {
-                Console.WriteLine($"Name: {ClubList.clubList[i].Name}\tAddress: {ClubList.clubList[i].Address}");
+                Console.WriteLine($"Name: {i + 1}: {ClubList.clubList[i].Name}\tAddress: {ClubList.clubList[i].Address}");
             }
+            Console.WriteLine("Enter the number corresponding to your club.");
         }
     }
 }
