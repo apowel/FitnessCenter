@@ -13,25 +13,8 @@ namespace FitnessCenter.Views
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("1. Take a look at the list of available clubs");
             Console.WriteLine("2. Take a look at the members of the fitness centers");
+            Console.WriteLine("3. Exit to desktop");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-            string input = Console.ReadLine();
-
-            if (input == "1")
-            {
-                 ClubListView.Display();
-            }
-            else if (input == "2")
-            {
-                 MemberListView.Display();
-            }
-            else
-            {
-                Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
-                Console.ReadLine();
-                Console.Clear();
-                Introduction();
-            }
         }
     }
 }

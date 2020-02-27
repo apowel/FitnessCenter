@@ -20,35 +20,6 @@ namespace FitnessCenter.Views
 
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Select a club from the list above.");
-            string input = Console.ReadLine();
-
-            if (input == "1")
-            {
-                Console.Clear();
-                ClubView.Display(ClubList.clubList[0]);
-            }
-            else if (input == "2")
-            {
-                Console.Clear();
-                ClubView.Display(ClubList.clubList[1]);
-            }
-            else if (input == "3")
-            {
-                Console.Clear();
-                ClubView.Display(ClubList.clubList[2]);
-            }
-            else if (input == "4")
-            {
-                Console.Clear();
-                ClubView.Display(ClubList.clubList[3]);
-            }
-            else
-            {
-                Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
-                Console.ReadLine();
-                Console.Clear();
-                Display();
-            }
         }
     }
 }

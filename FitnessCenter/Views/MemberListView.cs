@@ -29,7 +29,6 @@ namespace FitnessCenter.Views
                 Console.Clear();
                 Display();
             }
-
         }
     }
 }

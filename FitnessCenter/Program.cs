@@ -1,3 +1,6 @@
+﻿using System;
+using FitnessCenter.Controller;
+using FitnessCenter.Models;
 ﻿using FitnessCenter.Views;
 
 namespace FitnessCenter
@@ -6,7 +9,7 @@ namespace FitnessCenter
     {
         static void Main(string[] args)
         {
-            Index.Introduction();
+            HomeController controller = new HomeController();
         }
     }
 }

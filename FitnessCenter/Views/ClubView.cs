@@ -13,30 +13,6 @@ namespace FitnessCenter.Views
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("1. Check in as a member\n2. Add a new member\n3. View the current list of members\n4. Return to the Main Menu");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-            string input = Console.ReadLine();
-
-            if(input == "1")
-            {
-
-            }
-            else if(input == "2")
-            {
-                AddMemberView.Display(club);
-            }
-            else if(input == "3")
-            {
-
-            }
-            else if(input == "4")
-            {
-                
-            }
-            else
-            {
-                Console.WriteLine("That is not a valid response, please try again.");
-
-            }
         }
     }
 }
