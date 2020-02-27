@@ -17,7 +17,8 @@ namespace FitnessCenter.Models
         public static void Signup(Member member)
         {
             // change to make id set as random 4 digit number
-            member.Id = memberList.Max(e => e.Id) + 1;
+            Random id = new Random();
+            member.Id = id.Next(1000, 9999);
             memberList.Add(member);
         }
         public static Member GetMember(string name)

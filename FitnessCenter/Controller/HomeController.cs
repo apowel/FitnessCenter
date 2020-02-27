@@ -99,6 +99,7 @@ namespace FitnessCenter.Controller
                 {
                     currentMember = MemberList.GetMember(name);
                     currentMember.CheckIn(currentClub);
+                    MasterRouting(4);
                 }
                 catch (Exception)
                 {
@@ -126,9 +127,7 @@ namespace FitnessCenter.Controller
                 Console.WriteLine("That is not a valid response, please try again.");
                 MasterRouting(3);
             }
-
         }
-        
         private void MLVRoute()
         {
             try
@@ -146,15 +145,15 @@ namespace FitnessCenter.Controller
         
         private void MemberViewRoute()
         {
-            //this route is not yet implemented
-            MasterRouting(default);
+            MemberDetailsView.Display();
+            MasterRouting(3);
         }
         
         private void AddMemberViewRoute()
         {
             AddMemberView.Display(currentClub);
             MemberList.Signup(currentMember);
-            MasterRouting(default);
+            MasterRouting(3);
         }
         
     }

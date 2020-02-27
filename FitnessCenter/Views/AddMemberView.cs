@@ -25,14 +25,12 @@ namespace FitnessCenter.Views
 
             if (memType == "1")
             {
-                SCMember newMember = new SCMember() { Name = name, Membership = club.Membership, 
-                                                    Id =  id.Next(1000, 9999)};
+                SCMember newMember = new SCMember() { Name = name, Membership = club.Membership};
                 HomeController.currentMember = newMember;
             }
             else if (memType == "2")
             {
-                MCMember newMember = new MCMember() { Name = name, Membership = Membership.MultiClub, 
-                                                    Id = id.Next(1000, 9999) };
+                MCMember newMember = new MCMember() { Name = name, Membership = Membership.MultiClub};
                 HomeController.currentMember = newMember;
             }
             else
