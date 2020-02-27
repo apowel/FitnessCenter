@@ -24,16 +24,16 @@ namespace FitnessCenter.Controller
                 case 1:
                     CLVRoute();
                     break;
-                case 3:
+                case 2:
                     MLVRoute();
                     break;
-                case 4:
+                case 3:
                     ClubViewRoute();
                     break;
-                case 5:
+                case 4:
                     MemberViewRoute();
                     break;
-                /*case 6:
+                /*case 5:
                     AddMemberViewRoute();
                     break;*/
                 default:
@@ -44,6 +44,7 @@ namespace FitnessCenter.Controller
         private void IndexRoute()
         {
             Console.Clear();
+            currentMember = null;
             Index.Introduction();
             string input = Console.ReadLine();
 
@@ -73,14 +74,14 @@ namespace FitnessCenter.Controller
             ClubListView.CLView();
             int decision = 0;
             while (!Int32.TryParse(Console.ReadLine(), out decision)
-                || decision < 1 || decision > (ClubList.clubList.Count + 1))
+                || decision < 1 || decision > (ClubList.clubList.Count))
             {
                 Console.Clear();
                 Console.WriteLine("That was not a Valid input");
                 ClubListView.CLView();
             }
             ClubList.SetCurrentClub(decision);
-            MasterRouting(4);
+            MasterRouting(3);
         }
         
         private void ClubViewRoute()
@@ -100,18 +101,20 @@ namespace FitnessCenter.Controller
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("That member does not exist");
+                    Console.WriteLine("Error: That member does not exist");
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ReadKey();
                     ClubViewRoute();
                 }
                 MasterRouting(default);
             }
             else if (input == "2")
             {
-                MasterRouting(6);
+                MasterRouting(5);
             }
             else if (input == "3")
             {
-                MasterRouting(default);
+                MasterRouting(2);
             }
             else if (input == "4")
             {
@@ -120,13 +123,24 @@ namespace FitnessCenter.Controller
             else
             {
                 Console.WriteLine("That is not a valid response, please try again.");
+                MasterRouting(3);
             }
 
         }
         
         private void MLVRoute()
         {
-            MasterRouting(default);
+            try
+            {
+                MemberListView.MLView(MemberList.GetMembersOf(currentClub.Membership));
+                MasterRouting(3);
+            }
+            catch (Exception)
+            {
+                MemberListView.MLView(MemberList.memberList);
+                MasterRouting(default);
+            }
+            
         }
         
         private void MemberViewRoute()

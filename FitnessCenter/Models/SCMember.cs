@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitnessCenter.Controller;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,16 @@ namespace FitnessCenter.Models
     {
         public override void CheckIn(Club club)
         {
-            throw new NotImplementedException();
+            if ((int)HomeController.currentMember.Membership == club.Id - 1)
+            {
+                Console.WriteLine("Success!");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Not success");
+                Console.ReadKey();
+            }
         }
     }
 }

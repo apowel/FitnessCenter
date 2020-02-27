@@ -13,7 +13,7 @@ namespace FitnessCenter.Models
         public int Points { get; set; }
         public override void CheckIn(Club club)
         {
-            throw new NotImplementedException();
+            Points++;
         }
     }
 }

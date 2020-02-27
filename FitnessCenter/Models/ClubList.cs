@@ -10,10 +10,10 @@ namespace FitnessCenter.Models
     {
         public static List<Club> clubList  = new List<Club>()
             {
-                new Club() {Id = 1, Name = "Grand Rapids", Address = "605 Leonard ST NW"},
-                new Club() {Id = 2, Name = "Detroit", Address = "2918 W Davison St."},
-                new Club() {Id = 3, Name = "Djibouti", Address = "H4VW+WF Djibouti"},
-                new Club() {Id = 4, Name = "Kyoto", Address = "689 Nakagyo Ward"},
+                new Club() {Id = 1, Name = "Grand Rapids", Address = "605 Leonard ST NW", Membership = Membership.GrandRapids},
+                new Club() {Id = 2, Name = "Detroit", Address = "2918 W Davison St.", Membership = Membership.Detroit},
+                new Club() {Id = 3, Name = "Djibouti", Address = "H4VW+WF Djibouti", Membership = Membership.Djibouti},
+                new Club() {Id = 4, Name = "Kyoto", Address = "689 Nakagyo Ward", Membership = Membership.Kyoto},
             };
         public static void SetCurrentClub(int id)
         {
