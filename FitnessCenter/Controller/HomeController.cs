@@ -33,9 +33,9 @@ namespace FitnessCenter.Controller
                 case 4:
                     MemberViewRoute();
                     break;
-                /*case 5:
+                case 5:
                     AddMemberViewRoute();
-                    break;*/
+                    break;
                 default:
                     IndexRoute();
                     break;
@@ -45,6 +45,7 @@ namespace FitnessCenter.Controller
         {
             Console.Clear();
             currentMember = null;
+            currentClub = null;
             Index.Introduction();
             string input = Console.ReadLine();
 
@@ -148,11 +149,13 @@ namespace FitnessCenter.Controller
             //this route is not yet implemented
             MasterRouting(default);
         }
-        /*
-        private int AddMemberViewRoute()
+        
+        private void AddMemberViewRoute()
         {
-
+            AddMemberView.Display(currentClub);
+            MemberList.Signup(currentMember);
+            MasterRouting(default);
         }
-        */
+        
     }
 }

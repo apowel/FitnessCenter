@@ -28,7 +28,8 @@ namespace FitnessCenter.Models
         //returns a list of members of a gym and includes multiclub members.
         public static List<Member> GetMembersOf(Membership m)
         {
-            return memberList.Where(e => e.Membership == m || e.Membership == Membership.MultiClub).ToList();
+            return memberList.Where(e => e.Membership == m || 
+            e.Membership == Membership.MultiClub).ToList();
         }
 
         // add file.io saving implemenation here?
