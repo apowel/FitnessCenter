@@ -71,14 +71,14 @@ namespace FitnessCenter.Controller
         
         private void CLVRoute()
         {
-            ClubListView.CLView();
+            ClubListView.Display();
             int decision = 0;
             while (!Int32.TryParse(Console.ReadLine(), out decision)
                 || decision < 1 || decision > (ClubList.clubList.Count))
             {
                 Console.Clear();
                 Console.WriteLine("That was not a Valid input");
-                ClubListView.CLView();
+                ClubListView.Display();
             }
             ClubList.SetCurrentClub(decision);
             MasterRouting(3);
@@ -86,7 +86,7 @@ namespace FitnessCenter.Controller
         
         private void ClubViewRoute()
         {
-            ClubView.CView(currentClub);
+            ClubView.Display(currentClub);
             string input = Console.ReadLine();
 
             if (input == "1")
@@ -101,7 +101,7 @@ namespace FitnessCenter.Controller
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Error: That member does not exist");
+                    Console.WriteLine("Error: That person is not registered at this location.");
                     Console.WriteLine("Press any key to continue.");
                     Console.ReadKey();
                     ClubViewRoute();
@@ -132,12 +132,12 @@ namespace FitnessCenter.Controller
         {
             try
             {
-                MemberListView.MLView(MemberList.GetMembersOf(currentClub.Membership));
+                MemberListView.Display(MemberList.GetMembersOf(currentClub.Membership));
                 MasterRouting(3);
             }
             catch (Exception)
             {
-                MemberListView.MLView(MemberList.memberList);
+                MemberListView.Display(MemberList.memberList);
                 MasterRouting(default);
             }
             

@@ -9,15 +9,14 @@ namespace FitnessCenter.Models
     {
         public override void CheckIn(Club club)
         {
-            if ((int)HomeController.currentMember.Membership == club.Id - 1)
+            if (HomeController.currentMember.Membership == club.Membership)
             {
                 Console.WriteLine("Success!");
                 Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("Not success");
-                Console.ReadKey();
+                throw new Exception();
             }
         }
     }
