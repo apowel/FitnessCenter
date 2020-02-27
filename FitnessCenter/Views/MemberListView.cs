@@ -7,14 +7,28 @@ namespace FitnessCenter.Views
 {
     public class MemberListView
     {
-        public static void MLView(List<Member> list)
+        public static void Display()
         {
-            for (int i = 0; i < list.Count; i++)
+            Console.Clear();
+            Console.WriteLine("Here are the members of our Fitness Center.");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            for (int i = 0; i < MemberList.memberList.Count; i++)
             {
-                Console.WriteLine($"ID: {list[i].Id}\tMembership Type: {list[i].Membership}");
+                Console.WriteLine(String.Format("{0, -1}). ID: {1,-5} Membership Type: {2,-10}", $"{i+1}", $"{MemberList.memberList[i].Id}", $"{MemberList.memberList[i].Membership}"));
             }
-            Console.WriteLine("Press any key to return to the menu");
-            Console.ReadKey();
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Select a member from the list above.");
+            int decision = 0;
+
+            while (!Int32.TryParse(Console.ReadLine(), out decision)
+                || decision < 1 || decision > (MemberList.memberList.Count))
+            {
+                Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
+                Console.ReadLine();
+                Console.Clear();
+                Display();
+            }
         }
     }
 }

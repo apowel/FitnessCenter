@@ -7,7 +7,7 @@ namespace FitnessCenter.Views
 {
     public class ClubListView
     {
-        public static void CLView()
+        public static void Display()
         {
             Console.Clear();
             Console.WriteLine("Here is the list of available clubs.");

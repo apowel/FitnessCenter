@@ -1,6 +1,7 @@
 ﻿using System;
 using FitnessCenter.Controller;
 using FitnessCenter.Models;
+﻿using FitnessCenter.Views;
 
 namespace FitnessCenter
 {
