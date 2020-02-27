@@ -35,12 +35,12 @@ namespace FitnessCenter.Views
             else if (input == "3")
             {
                 Console.Clear();
-                ClubView.Display(ClubList.clubList[3]);
+                ClubView.Display(ClubList.clubList[2]);
             }
             else if (input == "4")
             {
                 Console.Clear();
-                ClubView.Display(ClubList.clubList[4]);
+                ClubView.Display(ClubList.clubList[3]);
             }
             else
             {

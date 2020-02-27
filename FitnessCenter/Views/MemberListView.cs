@@ -19,20 +19,17 @@ namespace FitnessCenter.Views
             }
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Select a member from the list above.");
-            string input = Console.ReadLine();
+            int decision = 0;
 
-            //Change to the while loop in Slack.
-            if (input == "1")
-            {
-                
-            }
-            else
+            while (!Int32.TryParse(Console.ReadLine(), out decision)
+                || decision < 1 || decision > (MemberList.memberList.Count))
             {
                 Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
                 Console.ReadLine();
                 Console.Clear();
                 Display();
             }
+
         }
     }
 }
