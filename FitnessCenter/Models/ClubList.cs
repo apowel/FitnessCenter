@@ -1,4 +1,5 @@
 ﻿using FitnessCenter.Controller;
+using FitnessCenter.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,17 @@ namespace FitnessCenter.Models
                 new Club() {Id = 3, Name = "Djibouti", Address = "H4VW+WF Djibouti", Membership = Membership.Djibouti},
                 new Club() {Id = 4, Name = "Kyoto", Address = "689 Nakagyo Ward", Membership = Membership.Kyoto},
             };
-        public static void SetCurrentClub(int id)
+        public static void SetCurrentClub()
         {
-            HomeController.currentClub = clubList.FirstOrDefault(e => e.Id == id);
+            int decision = 0;
+            while (!Int32.TryParse(Console.ReadLine(), out decision)
+                || decision < 1 || decision > (ClubList.clubList.Count))
+            {
+                Console.Clear();
+                Console.WriteLine("That was not a Valid input");
+                ClubListView.Display();
+            }
+            HomeController.currentClub = clubList.FirstOrDefault(e => e.Id == decision);
         }
         //Customized ToString for testing purposes.
         public override string ToString()

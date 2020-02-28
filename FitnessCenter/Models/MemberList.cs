@@ -16,14 +16,29 @@ namespace FitnessCenter.Models
         };
         public static void Signup(Member member)
         {
-            // change to make id set as random 4 digit number
+            // make validation to prevent duplicate Id's.
             Random id = new Random();
             member.Id = id.Next(1000, 9999);
             memberList.Add(member);
         }
+        public static void Remove(Member member)
+        {
+            memberList.Remove(member);
+        }
         public static Member GetMember(string name)
         {
             return memberList.FirstOrDefault(e => e.Name == name);
+        }
+        public static Member GetMember()
+        {
+            int decision = 0;
+            while (!Int32.TryParse(Console.ReadLine(), out decision)
+                || decision < 1000|| decision > 9999)
+            {
+                Console.Clear();
+                Console.WriteLine("That member does not exist.");
+            }
+            return memberList.FirstOrDefault(e => e.Id == decision);
         }
 
         //returns a list of members of a gym and includes multiclub members.

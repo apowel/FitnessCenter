@@ -17,23 +17,23 @@ namespace FitnessCenter.Controller
         {
             MasterRouting(default);
         }
-        private void MasterRouting(int i)
+        private void MasterRouting(string route)
         {
-            switch (i)
+            switch (route)
             {
-                case 1:
+                case "CLVRoute":
                     CLVRoute();
                     break;
-                case 2:
+                case "MLVRoute":
                     MLVRoute();
                     break;
-                case 3:
+                case "ClubViewRoute":
                     ClubViewRoute();
                     break;
-                case 4:
+                case "MemberViewRoute":
                     MemberViewRoute();
                     break;
-                case 5:
+                case "AddMemberViewRoute":
                     AddMemberViewRoute();
                     break;
                 default:
@@ -51,11 +51,11 @@ namespace FitnessCenter.Controller
 
             if (input == "1")
             {
-                MasterRouting(1);
+                MasterRouting("CLVRoute");
             }
             else if (input == "2")
             {
-                MasterRouting(2);
+                MasterRouting("MLVRoute");
             }
             else if (input == "3")
             {
@@ -73,16 +73,8 @@ namespace FitnessCenter.Controller
         private void CLVRoute()
         {
             ClubListView.Display();
-            int decision = 0;
-            while (!Int32.TryParse(Console.ReadLine(), out decision)
-                || decision < 1 || decision > (ClubList.clubList.Count))
-            {
-                Console.Clear();
-                Console.WriteLine("That was not a Valid input");
-                ClubListView.Display();
-            }
-            ClubList.SetCurrentClub(decision);
-            MasterRouting(3);
+            ClubList.SetCurrentClub();
+            MasterRouting("ClubViewRoute");
         }
         
         private void ClubViewRoute()
@@ -99,7 +91,7 @@ namespace FitnessCenter.Controller
                 {
                     currentMember = MemberList.GetMember(name);
                     currentMember.CheckIn(currentClub);
-                    MasterRouting(4);
+                    MasterRouting("MemberViewRoute");
                 }
                 catch (Exception)
                 {
@@ -112,11 +104,11 @@ namespace FitnessCenter.Controller
             }
             else if (input == "2")
             {
-                MasterRouting(5);
+                MasterRouting("AddMemberViewRoute");
             }
             else if (input == "3")
             {
-                MasterRouting(2);
+                MasterRouting("MLVRoute");
             }
             else if (input == "4")
             {
@@ -125,7 +117,7 @@ namespace FitnessCenter.Controller
             else
             {
                 Console.WriteLine("That is not a valid response, please try again.");
-                MasterRouting(3);
+                MasterRouting("ClubViewRoute");
             }
         }
         private void MLVRoute()
@@ -133,28 +125,35 @@ namespace FitnessCenter.Controller
             try
             {
                 MemberListView.Display(MemberList.GetMembersOf(currentClub.Membership));
-                MasterRouting(3);
+                currentMember = MemberList.GetMember();
+                MasterRouting("ClubViewRoute");
             }
             catch (Exception)
             {
                 MemberListView.Display(MemberList.memberList);
-                MasterRouting(default);
+                currentMember = MemberList.GetMember();
+                try
+                {
+                    MasterRouting("MemberViewRoute");
+                }
+                catch (Exception)
+                {
+                    MasterRouting(default);
+                }
             }
-            
         }
         
         private void MemberViewRoute()
         {
-            MemberDetailsView.Display();
-            MasterRouting(3);
+            MemberCheckInView.Display();
+            MasterRouting("ClubViewRoute");
         }
         
         private void AddMemberViewRoute()
         {
             AddMemberView.Display(currentClub);
             MemberList.Signup(currentMember);
-            MasterRouting(3);
+            MasterRouting("ClubViewRoute");
         }
-        
     }
 }

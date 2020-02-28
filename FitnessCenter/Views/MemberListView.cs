@@ -23,8 +23,8 @@ namespace FitnessCenter.Views
                     $"{list[i].Membership}"));
             }
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("Press any key to return to the previous menu");
-            Console.ReadKey();
+            Console.WriteLine("Select a member from the list above.");
+            
             /*int decision = 0;
 
             while (!Int32.TryParse(Console.ReadLine(), out decision)
