@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FitnessCenter.Controller;
+using FitnessCenter.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +39,14 @@ namespace FitnessCenter.Models
             {
                 Console.Clear();
                 Console.WriteLine("That member does not exist.");
+                try
+                {
+                    MemberListView.Display(MemberList.GetMembersOf(HomeController.currentClub.Membership));
+                }
+                catch (Exception)
+                {
+                    MemberListView.Display(MemberList.memberList);
+                }
             }
             return memberList.FirstOrDefault(e => e.Id == decision);
         }

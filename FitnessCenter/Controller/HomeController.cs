@@ -30,11 +30,14 @@ namespace FitnessCenter.Controller
                 case "ClubViewRoute":
                     ClubViewRoute();
                     break;
-                case "MemberViewRoute":
-                    MemberViewRoute();
+                case "MemberDetailsViewRoute":
+                    MemberDetailsViewRoute();
                     break;
                 case "AddMemberViewRoute":
                     AddMemberViewRoute();
+                    break;
+                case "MemberCheckInViewRoute":
+                    MemberCheckInViewRoute();
                     break;
                 default:
                     IndexRoute();
@@ -69,14 +72,12 @@ namespace FitnessCenter.Controller
                 MasterRouting(default);
             }
         }
-        
         private void CLVRoute()
         {
             ClubListView.Display();
             ClubList.SetCurrentClub();
             MasterRouting("ClubViewRoute");
         }
-        
         private void ClubViewRoute()
         {
             ClubView.Display(currentClub);
@@ -91,7 +92,7 @@ namespace FitnessCenter.Controller
                 {
                     currentMember = MemberList.GetMember(name);
                     currentMember.CheckIn(currentClub);
-                    MasterRouting("MemberViewRoute");
+                    MasterRouting("MemberCheckInViewRoute");
                 }
                 catch (Exception)
                 {
@@ -134,7 +135,7 @@ namespace FitnessCenter.Controller
                 currentMember = MemberList.GetMember();
                 try
                 {
-                    MasterRouting("MemberViewRoute");
+                    MasterRouting("MemberDetailsViewRoute");
                 }
                 catch (Exception)
                 {
@@ -142,13 +143,16 @@ namespace FitnessCenter.Controller
                 }
             }
         }
-        
-        private void MemberViewRoute()
+        private void MemberDetailsViewRoute()
+        {
+            MemberDetailsView.Display();
+            MasterRouting("ClubViewRoute");
+        }
+        private void MemberCheckInViewRoute()
         {
             MemberCheckInView.Display();
             MasterRouting("ClubViewRoute");
         }
-        
         private void AddMemberViewRoute()
         {
             AddMemberView.Display(currentClub);
