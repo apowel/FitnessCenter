@@ -23,8 +23,10 @@ namespace FitnessCenter.Views
             else
             {
             }
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
+            Console.WriteLine("~~Select one of the following options~~");
+            Console.WriteLine("\n1: Settle outstanding bill.");
+            Console.WriteLine("2: Delete member.");
+            Console.WriteLine("3: Return to the previous menu.");
         }
     }
 }

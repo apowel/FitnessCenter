@@ -127,7 +127,7 @@ namespace FitnessCenter.Controller
             {
                 MemberListView.Display(MemberList.GetMembersOf(currentClub.Membership));
                 currentMember = MemberList.GetMember();
-                MasterRouting("ClubViewRoute");
+                MasterRouting("MemberDetailsViewRoute");
             }
             catch (Exception)
             {
@@ -146,6 +146,7 @@ namespace FitnessCenter.Controller
         private void MemberDetailsViewRoute()
         {
             MemberDetailsView.Display();
+            Member.MemberMenu(currentMember);
             MasterRouting("ClubViewRoute");
         }
         private void MemberCheckInViewRoute()
