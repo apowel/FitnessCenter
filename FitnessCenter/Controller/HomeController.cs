@@ -66,8 +66,6 @@ namespace FitnessCenter.Controller
             }
             else
             {
-                Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
-                Console.ReadLine();
                 Console.Clear();
                 MasterRouting(default);
             }
@@ -126,21 +124,25 @@ namespace FitnessCenter.Controller
             try
             {
                 MemberListView.Display(MemberList.GetMembersOf(currentClub.Membership));
-                currentMember = MemberList.GetMember();
+                MemberList.GetMember();
                 MasterRouting("MemberDetailsViewRoute");
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
                 MemberListView.Display(MemberList.memberList);
-                currentMember = MemberList.GetMember();
                 try
                 {
+                    MemberList.GetMember();
                     MasterRouting("MemberDetailsViewRoute");
                 }
                 catch (Exception)
                 {
                     MasterRouting(default);
                 }
+            }
+            catch (Exception)
+            {
+                MasterRouting("ClubViewRoute");
             }
         }
         private void MemberDetailsViewRoute()

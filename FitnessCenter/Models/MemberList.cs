@@ -31,14 +31,27 @@ namespace FitnessCenter.Models
         {
             return memberList.FirstOrDefault(e => e.Name == name);
         }
-        public static Member GetMember()
+        /*public static int GetId()
         {
-            int decision = 0;
-            while (!Int32.TryParse(Console.ReadLine(), out decision)
-                || decision < 1000|| decision > 9999)
+            int id;
+            string input = Console.ReadLine();
+            if (input == null || input )
+            {
+
+            }
+        }*/
+        public static void GetMember()
+        {
+            int id = 0;
+            while (!Int32.TryParse(Console.ReadLine(), out id)
+                || id < 1000|| id > 9999)
             {
                 Console.Clear();
-                Console.WriteLine("That member does not exist.");
+                if (id == 0)
+                {
+                    throw new Exception();
+                }
+                Console.WriteLine("That is not a valid Id number.");
                 try
                 {
                     MemberListView.Display(MemberList.GetMembersOf(HomeController.currentClub.Membership));
@@ -48,7 +61,7 @@ namespace FitnessCenter.Models
                     MemberListView.Display(MemberList.memberList);
                 }
             }
-            return memberList.FirstOrDefault(e => e.Id == decision);
+            HomeController.currentMember =  memberList.FirstOrDefault(e => e.Id == id);
         }
 
         //returns a list of members of a gym and includes multiclub members.

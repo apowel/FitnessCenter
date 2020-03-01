@@ -23,7 +23,7 @@ namespace FitnessCenter.Views
                     $"{list[i].Membership}"));
             }
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("Select a member by typing their Id number.");
+            Console.WriteLine("Select a member by typing their Id number. To return to the previous menu hit 'enter'.");
             
             /*int decision = 0;
 
