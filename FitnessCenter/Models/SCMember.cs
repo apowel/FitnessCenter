@@ -11,8 +11,7 @@ namespace FitnessCenter.Models
         {
             if (HomeController.currentMember.Membership == club.Membership)
             {
-                Console.WriteLine("Success!");
-                Console.ReadKey();
+                
             }
             else
             {

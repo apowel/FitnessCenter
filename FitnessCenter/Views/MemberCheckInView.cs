@@ -7,7 +7,7 @@ using FitnessCenter.Controller;
 
 namespace FitnessCenter.Views
 {
-    public class MemberDetailsView
+    public class MemberCheckInView
     {
         public static void Display()
         {
@@ -15,19 +15,18 @@ namespace FitnessCenter.Views
             Console.WriteLine($"Member ID: {HomeController.currentMember.Id}");
             Console.WriteLine($"Member Name: {HomeController.currentMember.Name}");
             Console.WriteLine($"Home Club: {HomeController.currentMember.Membership}");
-            Console.WriteLine($"Outstanding Balance: {HomeController.currentMember.Price:C}");
             if (HomeController.currentMember.Membership == Membership.MultiClub)
             {
                 MCMember placeHolder = (MCMember)HomeController.currentMember;
+                Console.WriteLine("Welcome!");
                 Console.WriteLine($"Points: {placeHolder.Points}");
             }
             else
             {
+                Console.WriteLine("Welcome!");
             }
-            Console.WriteLine("\n~~Select one of the following options~~");
-            Console.WriteLine("\n1: Settle outstanding bill.");
-            Console.WriteLine("2: Delete member.");
-            Console.WriteLine("3: Return to the previous menu.");
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
         }
     }
 }
