@@ -10,5 +10,8 @@ namespace FitnessCenter.Models
         public string Name { get; set; }
         public Membership Membership { get; set; }
         public abstract void CheckIn(Club club);
+        public int Price { get; set; }
+        public  DateTime Begin { get; set; }
+
     }
 }

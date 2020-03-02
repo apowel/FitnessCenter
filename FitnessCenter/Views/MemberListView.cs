@@ -16,23 +16,20 @@ namespace FitnessCenter.Views
 
             for (int i = 0; i < list.Count; i++)
             {
-                Console.WriteLine(String.Format("{0, -1}). ID: {1,-5} Membership Type: {2,-10}", $"{i + 1}", $"{MemberList.memberList[i].Id}", $"{MemberList.memberList[i].Membership}"));
+                Console.WriteLine(String.Format("{0, -1}). ID: {1,-5} Name {2,-8} Membership Type: {3,-10}", $"{i + 1}", $"{list[i].Id}", $"{list[i].Name}",$"{list[i].Membership}"));
             }
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Select a member from the list above.");
-            Console.WriteLine("Press any key to return to the previous menu");
-            Console.ReadKey();
-            /*int decision = 0;
 
-            while (!Int32.TryParse(Console.ReadLine(), out decision)
-                || decision < 1 || decision > (list.Count))
-            {
-                Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
-                Console.ReadLine();
-                Console.Clear();
-                Display(list);
-            }*/
-
+            //int decision = 0;
+            //while (!Int32.TryParse(Console.ReadLine(), out decision)
+            //    || decision < 1 || decision > (.Count + 1))
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("That was not a Valid input");
+            //    roster.GetUsers();
+            //    Console.WriteLine($"{roster.users.Count + 1}: Create New Character");
+            //}
         }
     }
 }
