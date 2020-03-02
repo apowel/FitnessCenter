@@ -27,11 +27,22 @@ namespace FitnessCenter.Models
             }
             else if (input == "2")
             {
-                MemberList.memberList.Remove(member);
-                Console.WriteLine($"{member.Name} has been deleted from our records.");
-                Console.WriteLine("Press any key to continue.");
-                Console.ReadKey();
-                return;
+                Console.WriteLine($"If you wish to delete {HomeController.currentMember.Name} type 'yes'.");
+                string decision = Console.ReadLine().ToLower().Trim();
+                if (decision == "yes")
+                {
+                    MemberList.memberList.Remove(member);
+                    Console.WriteLine($"{member.Name} has been deleted from our records.");
+                    Console.WriteLine("Press any key to continue.");
+                    Console.ReadKey();
+                    return;
+                }
+                else
+                {
+                    MemberDetailsView.Display();
+                    MemberMenu(member);
+                    return;
+                }
             }
             else if (input == "3")
             {
