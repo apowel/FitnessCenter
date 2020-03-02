@@ -13,8 +13,9 @@ namespace FitnessCenter.Views
         {
             Console.Clear();
             Console.WriteLine($"Member ID: {HomeController.currentMember.Id}");
-            Console.WriteLine($"Member Name:{HomeController.currentMember.Name}");
+            Console.WriteLine($"Member Name: {HomeController.currentMember.Name}");
             Console.WriteLine($"Home Club: {HomeController.currentMember.Membership}");
+            Console.WriteLine($"Outstanding Balance: {HomeController.currentMember.Price:C}");
             if (HomeController.currentMember.Membership == Membership.MultiClub)
             {
                 MCMember placeHolder = (MCMember)HomeController.currentMember;
@@ -23,7 +24,7 @@ namespace FitnessCenter.Views
             else
             {
             }
-            Console.WriteLine("~~Select one of the following options~~");
+            Console.WriteLine("\n~~Select one of the following options~~");
             Console.WriteLine("\n1: Settle outstanding bill.");
             Console.WriteLine("2: Delete member.");
             Console.WriteLine("3: Return to the previous menu.");

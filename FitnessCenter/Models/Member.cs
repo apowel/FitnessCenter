@@ -1,4 +1,5 @@
-﻿using FitnessCenter.Views;
+﻿using FitnessCenter.Controller;
+using FitnessCenter.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,8 @@ namespace FitnessCenter.Models
             if (input == "1")
             {
                 member.Price = 0;
-                Console.WriteLine($"{member.Name} has paid their bill!");
+                Console.WriteLine($"{member.Name} has paid their bill! Press any key to continue");
+                Console.ReadKey();
                 MemberDetailsView.Display();
                 MemberMenu(member);
                 return;
@@ -34,6 +36,39 @@ namespace FitnessCenter.Models
             else if (input == "3")
             {
                 return;
+            }
+        }
+        public static void GetNewName()
+        {
+            string name = "";
+            name = Console.ReadLine();
+            while (name == "")
+            {
+                Console.Clear();
+                Console.WriteLine("Please type your name.");
+                name = Console.ReadLine();
+            }
+            HomeController.currentMember.Name = name;
+        }
+        public static void GetNewMemberType(Club club)
+        {
+            string memberType = Console.ReadLine();
+
+            if (memberType == "1")
+            {
+                SCMember newMember = new SCMember() { Membership = club.Membership };
+                HomeController.currentMember = newMember;
+            }
+            else if (memberType == "2")
+            {
+                MCMember newMember = new MCMember() { Membership = Membership.MultiClub };
+                HomeController.currentMember = newMember;
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid answer, please try again.");
+                Console.ReadKey();
+                AddMemberView.Display(club);
             }
         }
     }

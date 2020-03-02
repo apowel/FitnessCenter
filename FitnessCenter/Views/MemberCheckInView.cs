@@ -13,7 +13,7 @@ namespace FitnessCenter.Views
         {
             Console.Clear();
             Console.WriteLine($"Member ID: {HomeController.currentMember.Id}");
-            Console.WriteLine($"Member Name:{HomeController.currentMember.Name}");
+            Console.WriteLine($"Member Name: {HomeController.currentMember.Name}");
             Console.WriteLine($"Home Club: {HomeController.currentMember.Membership}");
             if (HomeController.currentMember.Membership == Membership.MultiClub)
             {
