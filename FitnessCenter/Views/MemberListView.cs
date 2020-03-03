@@ -36,6 +36,15 @@ namespace FitnessCenter.Views
                 Display(list);
             }*/
 
+            //int decision = 0;
+            //while (!Int32.TryParse(Console.ReadLine(), out decision)
+            //    || decision < 1 || decision > (.Count + 1))
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("That was not a Valid input");
+            //    roster.GetUsers();
+            //    Console.WriteLine($"{roster.users.Count + 1}: Create New Character");
+            //}
         }
     }
 }

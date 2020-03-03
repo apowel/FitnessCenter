@@ -19,6 +19,7 @@ namespace FitnessCenter.Models
         public int Balance { get; set; }
         public DateTime Begin { get; set; }
         public abstract void CheckIn(Club club);
+
         public static void MemberMenu(Member member)
         {
             string input = Console.ReadLine();
