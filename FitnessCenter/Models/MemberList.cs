@@ -17,10 +17,10 @@ namespace FitnessCenter.Models
     {
         public static List<Member> memberList = new List<Member>()
         {
-            new SCMember() { Id = 1234, Name = "Andrew", Membership = Membership.GrandRapids },
-            new SCMember() { Id = 7138, Name = "Austin", Membership = Membership.Djibouti },
-            new MCMember() { Id = 3825, Name = "Tommy", Membership = Membership.MultiClub },
-            new SCMember() { Id = 2678, Name = "Naruto", Membership = Membership.Kyoto }
+            new SCMember() { Id = 1234, Name = "Andrew", Price = 10, Membership = Membership.GrandRapids, Begin = new DateTime(2020, 01, 01) },
+            new SCMember() { Id = 7138, Name = "Austin", Price = 10, Membership = Membership.Djibouti, Begin = new DateTime(2019, 04, 20) },
+            new MCMember() { Id = 3825, Name = "Tommy", Price = 20, Membership = Membership.MultiClub, Begin = new DateTime(2015, 08, 28) },
+            new SCMember() { Id = 2678, Name = "Naruto", Price = 10, Membership = Membership.Kyoto, Begin = new DateTime(2017, 03, 17) }
         };
         public static void Signup(Member member)
         {
@@ -37,15 +37,13 @@ namespace FitnessCenter.Models
         {
             return memberList.FirstOrDefault(e => e.Name == name);
         }
-        /*public static int GetId()
+        public static int GetBalance()
         {
-            int id;
-            string input = Console.ReadLine();
-            if (input == null || input )
-            {
-
-            }
-        }*/
+            int monthResult = (DateTime.Today.Month - HomeController.currentMember.Begin.Month) 
+                + 12 * (DateTime.Today.Year - HomeController.currentMember.Begin.Year);
+            int balance = monthResult * HomeController.currentMember.Price;
+            return balance;
+        }
         public static void GetMember()
         {
             int id = 0;
