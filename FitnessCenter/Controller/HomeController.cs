@@ -47,6 +47,7 @@ namespace FitnessCenter.Controller
         private void IndexRoute()
         {
             Console.Clear();
+            currentClub = null;
             currentMember = null;
             currentClub = null;
             Index.Introduction();

@@ -11,10 +11,10 @@ namespace FitnessCenter.Models
     {
         public static List<Member> memberList = new List<Member>()
         {
-            new SCMember() { Id = 1234, Name = "Andrew", Membership = Membership.GrandRapids },
-            new SCMember() { Id = 7138, Name = "Austin", Membership = Membership.Djibouti },
-            new MCMember() { Id = 3825, Name = "Tommy", Membership = Membership.MultiClub },
-            new SCMember() { Id = 2678, Name = "Naruto", Membership = Membership.Kyoto }
+            new SCMember() { Id = 1234, Name = "Andrew", Membership = Membership.GrandRapids, Price =  10, Begin = new DateTime(2020, 01, 01) },
+            new SCMember() { Id = 7138, Name = "Austin", Membership = Membership.Djibouti, Price = 10, Begin = new DateTime(2019, 04, 20) },
+            new MCMember() { Id = 3825, Name = "Tommy", Membership = Membership.MultiClub, Price = 20, Begin = new DateTime(2015, 08, 28) },
+            new SCMember() { Id = 2678, Name = "Naruto", Membership = Membership.Kyoto, Price = 10, Begin = new DateTime(2017, 03, 17) }
         };
         public static void Signup(Member member)
         {
