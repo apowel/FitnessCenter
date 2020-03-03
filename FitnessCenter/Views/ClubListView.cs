@@ -15,11 +15,11 @@ namespace FitnessCenter.Views
 
             for (int i = 0; i < ClubList.clubList.Count; i++)
             {
-                Console.WriteLine(String.Format("{0, -1}). Name: {1,-15} Address: {2,-10}", $"{i + 1}", $"{ClubList.clubList[i].Name}", $"{ClubList.clubList[i].Address}"));
+                Console.WriteLine(String.Format("{0, -1}) Name: {1,-15} Address: {2,-10}", $"{i + 1}", $"{ClubList.clubList[i].Name}", $"{ClubList.clubList[i].Address}"));
             }
 
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("Select a club from the list above.");
+            Console.WriteLine("To select a club, enter the corresponding number as listed.");
         }
     }
 }

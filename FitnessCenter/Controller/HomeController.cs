@@ -17,25 +17,28 @@ namespace FitnessCenter.Controller
         {
             MasterRouting(default);
         }
-        private void MasterRouting(int i)
+        private void MasterRouting(string route)
         {
-            switch (i)
+            switch (route)
             {
-                case 1:
+                case "CLVRoute":
                     CLVRoute();
                     break;
-                case 2:
+                case "MLVRoute":
                     MLVRoute();
                     break;
-                case 3:
+                case "ClubViewRoute":
                     ClubViewRoute();
                     break;
-                case 4:
-                    MemberViewRoute();
+                case "MemberDetailsViewRoute":
+                    MemberDetailsViewRoute();
                     break;
-                /*case 5:
+                case "AddMemberViewRoute":
                     AddMemberViewRoute();
-                    break;*/
+                    break;
+                case "MemberCheckInViewRoute":
+                    MemberCheckInViewRoute();
+                    break;
                 default:
                     IndexRoute();
                     break;
@@ -46,16 +49,17 @@ namespace FitnessCenter.Controller
             Console.Clear();
             currentClub = null;
             currentMember = null;
+            currentClub = null;
             Index.Introduction();
             string input = Console.ReadLine();
 
             if (input == "1")
             {
-                MasterRouting(1);
+                MasterRouting("CLVRoute");
             }
             else if (input == "2")
             {
-                MasterRouting(2);
+                MasterRouting("MLVRoute");
             }
             else if (input == "3")
             {
@@ -63,28 +67,16 @@ namespace FitnessCenter.Controller
             }
             else
             {
-                Console.WriteLine("Invalid response, please try again! (Press \"enter\" to try again)");
-                Console.ReadLine();
                 Console.Clear();
                 MasterRouting(default);
             }
         }
-        
         private void CLVRoute()
         {
             ClubListView.Display();
-            int decision = 0;
-            while (!Int32.TryParse(Console.ReadLine(), out decision)
-                || decision < 1 || decision > (ClubList.clubList.Count))
-            {
-                Console.Clear();
-                Console.WriteLine("That was not a Valid input");
-                ClubListView.Display();
-            }
-            ClubList.SetCurrentClub(decision);
-            MasterRouting(3);
+            ClubList.SetCurrentClub();
+            MasterRouting("ClubViewRoute");
         }
-        
         private void ClubViewRoute()
         {
             ClubView.Display(currentClub);
@@ -99,6 +91,7 @@ namespace FitnessCenter.Controller
                 {
                     currentMember = MemberList.GetMember(name);
                     currentMember.CheckIn(currentClub);
+                    MasterRouting("MemberCheckInViewRoute");
                 }
                 catch (Exception)
                 {
@@ -111,11 +104,11 @@ namespace FitnessCenter.Controller
             }
             else if (input == "2")
             {
-                MasterRouting(5);
+                MasterRouting("AddMemberViewRoute");
             }
             else if (input == "3")
             {
-                MasterRouting(2);
+                MasterRouting("MLVRoute");
             }
             else if (input == "4")
             {
@@ -124,36 +117,51 @@ namespace FitnessCenter.Controller
             else
             {
                 Console.WriteLine("That is not a valid response, please try again.");
-                MasterRouting(3);
+                MasterRouting("ClubViewRoute");
             }
-
         }
-        
         private void MLVRoute()
         {
             try
             {
                 MemberListView.Display(MemberList.GetMembersOf(currentClub.Membership));
-                MasterRouting(3);
+                MemberList.GetMember();
+                MasterRouting("MemberDetailsViewRoute");
+            }
+            catch (NullReferenceException)
+            {
+                MemberListView.Display(MemberList.memberList);
+                try
+                {
+                    MemberList.GetMember();
+                    MasterRouting("MemberDetailsViewRoute");
+                }
+                catch (Exception)
+                {
+                    MasterRouting(default);
+                }
             }
             catch (Exception)
             {
-                MemberListView.Display(MemberList.memberList);
-                MasterRouting(default);
+                MasterRouting("ClubViewRoute");
             }
-            
         }
-        
-        private void MemberViewRoute()
+        private void MemberDetailsViewRoute()
         {
-            //this route is not yet implemented
-            MasterRouting(default);
+            MemberDetailsView.Display();
+            Member.MemberMenu(currentMember);
+            MasterRouting("ClubViewRoute");
         }
-        /*
-        private int AddMemberViewRoute()
+        private void MemberCheckInViewRoute()
         {
-
+            MemberCheckInView.Display();
+            MasterRouting("ClubViewRoute");
         }
-        */
+        private void AddMemberViewRoute()
+        {
+            AddMemberView.Display(currentClub);
+            MemberList.Signup(currentMember);
+            MasterRouting("ClubViewRoute");
+        }
     }
 }
