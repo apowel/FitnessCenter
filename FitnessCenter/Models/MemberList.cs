@@ -4,9 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace FitnessCenter.Models
 {
+    [XmlInclude(typeof(SCMember))]
+    [XmlInclude(typeof(MCMember))]
+    [XmlInclude(typeof(Member))]
+    [XmlInclude(typeof(List<Member>))]
+    [Serializable()]
     public class MemberList
     {
         public static List<Member> memberList = new List<Member>()

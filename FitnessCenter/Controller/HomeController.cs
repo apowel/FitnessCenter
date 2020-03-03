@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using FitnessCenter.Models;
 using FitnessCenter.Views;
 using Index = FitnessCenter.Views.Index;
@@ -15,6 +17,7 @@ namespace FitnessCenter.Controller
         public static Member currentMember;
         public HomeController()
         {
+            GetMemberList();
             MasterRouting(default);
         }
         private void MasterRouting(string route)
@@ -62,6 +65,7 @@ namespace FitnessCenter.Controller
             }
             else if (input == "3")
             {
+                WriteXML(MemberList.memberList);
                 Environment.Exit(0);
             }
             else
@@ -161,6 +165,37 @@ namespace FitnessCenter.Controller
             AddMemberView.Display(currentClub);
             MemberList.Signup(currentMember);
             MasterRouting("ClubViewRoute");
+        }
+        private static void WriteXML(List<Member> memberList)
+        {
+            var path = "MemberList.XML";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Member>));
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            TextWriter writer = new StreamWriter(path);
+            serializer.Serialize(writer, memberList);
+            writer.Close();
+        }
+        private static List<Member> ReadFromXmlFile(string path)
+        {
+            object obj = null;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Member>));
+            if (File.Exists(path))
+            {
+                TextReader textReader = new StreamReader(path);
+                obj = serializer.Deserialize(textReader);
+                textReader.Close();
+            }
+            return (List<Member>)obj;
+        }
+        private void GetMemberList()
+        {
+            if (File.Exists("MemberList.XML"))
+            {
+                MemberList.memberList = ReadFromXmlFile("MemberList.XML");
+            }
         }
     }
 }

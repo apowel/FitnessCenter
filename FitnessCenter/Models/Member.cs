@@ -3,9 +3,15 @@ using FitnessCenter.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace FitnessCenter.Models
 {
+    [XmlInclude(typeof(SCMember))]
+    [XmlInclude(typeof(MCMember))]
+    [XmlInclude(typeof(Member))]
+    [XmlInclude(typeof(List<Member>))]
+    [Serializable()]
     public abstract class Member
     {
         public int Id { get; set; }
