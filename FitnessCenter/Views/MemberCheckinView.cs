@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FitnessCenter.Views
 {
-    public static class MemberCheckinView
+    public static class MemberCheckInView
     {
         public static int MonthDifference(this DateTime lValue, DateTime rValue)
         {
