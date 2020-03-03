@@ -14,7 +14,7 @@ namespace FitnessCenter.Views
             Console.WriteLine($"Member ID: {HomeController.currentMember.Id}");
             Console.WriteLine($"Member Name: {HomeController.currentMember.Name}");
             Console.WriteLine($"Home Club: {HomeController.currentMember.Membership}");
-            Console.WriteLine($"Outstanding Balance: {HomeController.currentMember.Price:C}");
+            Console.WriteLine($"Outstanding Balance: {MemberList.GetBalance():C}");
             if (HomeController.currentMember.Membership == Membership.MultiClub)
             {
                 MCMember placeHolder = (MCMember)HomeController.currentMember;

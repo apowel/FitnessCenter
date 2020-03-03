@@ -1,8 +1,8 @@
 ﻿using FitnessCenter.Controller;
 using FitnessCenter.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using FitnessCenter.Models;
+
 
 namespace FitnessCenter.Views
 {

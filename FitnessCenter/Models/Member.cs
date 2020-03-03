@@ -9,8 +9,6 @@ namespace FitnessCenter.Models
 {
     [XmlInclude(typeof(SCMember))]
     [XmlInclude(typeof(MCMember))]
-    [XmlInclude(typeof(Member))]
-    [XmlInclude(typeof(List<Member>))]
     [Serializable()]
     public abstract class Member
     {
@@ -18,7 +16,8 @@ namespace FitnessCenter.Models
         public string Name { get; set; }
         public Membership Membership { get; set; }
         public int Price { get; set; }
-        public  DateTime Begin { get; set; }
+        public int Balance { get; set; }
+        public DateTime Begin { get; set; }
         public abstract void CheckIn(Club club);
 
         public static void MemberMenu(Member member)
@@ -26,7 +25,8 @@ namespace FitnessCenter.Models
             string input = Console.ReadLine();
             if (input == "1")
             {
-                member.Price = 0;
+                member.Balance = 0;
+                member.Begin = DateTime.Today;
                 Console.WriteLine($"{member.Name} has paid their bill! Press any key to continue");
                 Console.ReadKey();
                 MemberDetailsView.Display();

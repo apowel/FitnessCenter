@@ -10,6 +10,8 @@ namespace FitnessCenter
         static void Main(string[] args)
         {
             HomeController controller = new HomeController();
+            /*HomeController.currentMember = MemberList.memberList[1];
+            Console.WriteLine(MemberList.GetBalance());*/
         }
     }
 }
