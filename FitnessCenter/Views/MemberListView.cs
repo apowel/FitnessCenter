@@ -16,9 +16,9 @@ namespace FitnessCenter.Views
 
             for (int i = 0; i < list.Count; i++)
             {
-                Console.WriteLine(String.Format("{0, -1}) ID: {1,-5} Name: {2,-8} " +
-                    "Membership Type: {3,-10}",
-                    $"{i + 1}", $"{list[i].Id}",
+                Console.WriteLine(String.Format("ID: {0,-5} Name: {1,-8} " +
+                    "Membership Type: {2,-10}",
+                    $"{list[i].Id}",
                     $"{list[i].Name}",
                     $"{list[i].Membership}"));
             }
