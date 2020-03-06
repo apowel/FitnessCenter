@@ -11,7 +11,7 @@ namespace FitnessCenter.Models
         {
             if (HomeController.currentMember.Membership == club.Membership)
             {
-                
+                return;
             }
             else
             {
