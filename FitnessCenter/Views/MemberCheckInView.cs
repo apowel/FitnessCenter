@@ -20,28 +20,32 @@ namespace FitnessCenter.Views
             Console.WriteLine($"Member Name:{HomeController.currentMember.Name}");
             Console.WriteLine($"Home Club: {HomeController.currentMember.Membership}");
 
-            
-
             if (HomeController.currentMember.Membership == Membership.MultiClub)
             {
                 MCMember placeHolder = (MCMember)HomeController.currentMember;
                 int billing = MonthDifference(DateTime.Today, placeHolder.Begin) * placeHolder.Price;
+                var startDate = placeHolder.Begin;
+                DateTime dateAndTime = DateTime.Now;
+                var todayDate = DateTime.Now;
                 Console.WriteLine("Welcome!");
                 Console.WriteLine($"Points: {placeHolder.Points}\n");
-                Console.WriteLine($"Membership Price: {placeHolder.Price}");
-                Console.WriteLine($"Start Date: {placeHolder.Begin}");
-                Console.WriteLine($"Current Date: {DateTime.Today}\n");
-                Console.WriteLine($"Your current amount due is:{billing} ");
+                Console.WriteLine($"Membership Price: {placeHolder.Price:C}");
+                Console.WriteLine($"Last Payment Date: {startDate.ToString("MM/dd/yyy")}");
+                Console.WriteLine($"Current Date: {todayDate.ToString("MM/dd/yyyy")}\n");
+                Console.WriteLine($"Your current amount due is:{billing:C}\n");
             }
             else
             {
                 SCMember placeHolder = (SCMember)HomeController.currentMember;
                 int billing = MonthDifference(DateTime.Today, placeHolder.Begin) * placeHolder.Price;
+                var startDate = placeHolder.Begin;
+                DateTime dateAndTime = DateTime.Now;
+                var todayDate = DateTime.Now;
                 Console.WriteLine("Welcome!");
-                Console.WriteLine($"Membership Price: {HomeController.currentMember.Price}");
-                Console.WriteLine($"Start Date: {HomeController.currentMember.Begin}");
-                Console.WriteLine($"Current Date: {DateTime.Today}\n");
-                Console.WriteLine($"Your current amount due is: {billing}");
+                Console.WriteLine($"Membership Price: {placeHolder.Price:C}");
+                Console.WriteLine($"Last Payment Date: {startDate.ToString("MM/dd/yyy")}");
+                Console.WriteLine($"Current Date: {todayDate.ToString("MM/dd/yyyy")}\n");
+                Console.WriteLine($"Your current amount due is:{billing:C}\n");
             }
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
