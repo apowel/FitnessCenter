@@ -24,9 +24,19 @@ namespace FitnessCenter.Models
         };
         public static void Signup(Member member)
         {
-            // make validation to prevent duplicate Id's.
-            Random id = new Random();
-            member.Id = id.Next(1000, 9999);
+            // change to make id set as random 4 digit number
+            member.Id = memberList.Max(e => e.Id) + 1;
+            
+            member.Begin = DateTime.Now;
+            
+            if (member.Membership == Membership.MultiClub)
+            {
+                member.Price = 20;
+            }
+            else
+            {
+                member.Price = 10;
+            }
             memberList.Add(member);
         }
         public static void Remove(Member member)
